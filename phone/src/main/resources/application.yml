@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+config:
+  arcface-sdk:
+    sdk-lib-path: d:/arcsoft_lib
+    app-id: 8XMHMu71Dmb5UtAEBpPTB1E9ZPNTw2nrvQ5bXxBobUA8
+    sdk-key: BA8TLA9vVwK7G6btJh2A2FCa8ZrC6VWZLNbBBFctCz5R
+
+
+
+
+
+datasource:
+    url: jdbc:mysql://localhost:3306/face?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root

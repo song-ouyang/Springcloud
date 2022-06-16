@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mbg.exam.mapper.AnswerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mbg.exam.entity.Answer">
+        <id column="id" property="id" />
+        <result column="answer" property="answer" />
+        <result column="answer2" property="answer2" />
+        <result column="answer3" property="answer3" />
+        <result column="answer4" property="answer4" />
+        <result column="answer5" property="answer5" />
+        <result column="paper_id" property="paperId" />
+        <result column="answer_order" property="answerOrder" />
+        <result column="score" property="score" />
+        <result column="stu_id" property="stuId" />
+        <result column="is_true" property="isTrue" />
+        <result column="create_date" property="createDate" />
+        <result column="modify_date" property="modifyDate" />
+        <result column="state" property="state" />
+        <result column="state_de" property="stateDe" />
+    </resultMap>
+
+
+    <resultMap id="inquirymap" type="java.util.HashMap"/>
+
+    <select id="getpaperandanswer1" resultMap="inquirymap">
+        select ks_answer.state,ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ks_answer.score,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
+        from ks_answer
+                 INNER JOIN ex_recording on ks_answer.paper_id=ex_recording.paper_id
+        where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1}  and  ks_answer.answer_order=ex_recording.ex_level
+    </select>
+
+    <select id="getpaperandanswer2" resultMap="inquirymap">
+        select ks_answer.state,ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
+        from ks_answer
+            INNER JOIN ex_recording on ks_answer.paper_id=ex_recording.paper_id
+        where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1} and  ks_answer.answer_order=ex_recording.ex_level
+    </select>
+
+    <select id="getrandow" resultMap="BaseResultMap">
+        select * from ks_answer where ks_answer.paper_id=#{paperid}
+    </select>
+</mapper>
+

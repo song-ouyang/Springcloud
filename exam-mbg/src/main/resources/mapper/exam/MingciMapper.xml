@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mbg.exam.mapper.MingciMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mbg.exam.entity.Mingci">
+        <id column="id" property="id" />
+        <result column="mt_question" property="mtQuestion" />
+        <result column="mt_right" property="mtRight" />
+        <result column="mt_analysis" property="mtAnalysis" />
+        <result column="mt_score" property="mtScore" />
+        <result column="create_date" property="createDate" />
+        <result column="modify_date" property="modifyDate" />
+        <result column="mt_subject" property="mtSubject" />
+        <result column="mt_state" property="mtState" />
+        <result column="state_de" property="stateDe" />
+        <result column="mt_level" property="mtLevel" />
+    </resultMap>
+
+
+    <resultMap id="inquirymap" type="java.util.HashMap"/>
+    <select id="select5"  resultMap="inquirymap">
+        select ex_recording.ex_level,ex_recording.type,tm_mingci.mt_question,tm_mingci.mt_right,tm_mingci.mt_analysis,tm_mingci.mt_analysis,tm_mingci.mt_score,tm_mingci.mt_subject,tm_mingci.mt_state,tm_mingci.mt_level
+        from tm_mingci
+        left join  ex_recording on ex_recording.ex_id=tm_mingci.id
+        where ex_recording.id= #{id}
+    </select>
+
+
+
+</mapper>

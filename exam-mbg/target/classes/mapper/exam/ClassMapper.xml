@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mbg.exam.mapper.ClassMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mbg.exam.entity.Class">
+        <id column=" id" property="id" />
+        <result column="specialized" property="specialized" />
+        <result column="school_cl" property="school_cl" />
+        <result column="create_date" property="createDate" />
+        <result column="modify_date" property="modifyDate" />
+    </resultMap>
+
+
+
+    <resultMap id="inquirymap" type="java.util.HashMap"/>
+
+    <select id="getschoolclass"  resultMap="inquirymap">
+        select ks_school.name,ks_class.specialized from ks_class left join ks_school on ks_class.school_cl=ks_school.id
+    </select>
+
+
+
+
+    <select id="getschool"  resultMap="inquirymap">
+        select ks_school.name from ks_school
+    </select>
+
+
+    <select id="getclass"  resultMap="inquirymap">
+        select ks_class.specialized from ks_school left join ks_class on  ks_class.school_cl=ks_school.id
+         where ks_school.name=#{school}
+    </select>
+
+
+</mapper>
