@@ -30,16 +30,4 @@
         <result column="yue_level" property="yueLevel" />
     </resultMap>
 
-
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-
-    <select id="select3"  resultMap="inquirymap">
-        select ex_recording.ex_level,ex_recording.type,tm_yue.yue_subject,tm_yue.yue_question,tm_yue.yue_que1,tm_yue.yue_right1,tm_yue.yue_que2,tm_yue.yue_right2,tm_yue.yue_que3,tm_yue.yue_right3,tm_yue.yue_que4,tm_yue.yue_right4,tm_yue.yue_que5,tm_yue.yue_right5,tm_yue.yue_score,tm_yue.yue_analysis,tm_yue.yue_level
-        from tm_yue
-         left join  ex_recording on ex_recording.ex_id=tm_yue.id
-        where ex_recording.id= #{id}
-    </select>
-
-
 </mapper>

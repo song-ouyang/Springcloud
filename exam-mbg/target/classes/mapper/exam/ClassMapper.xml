@@ -12,25 +12,4 @@
     </resultMap>
 
 
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-
-    <select id="getschoolclass"  resultMap="inquirymap">
-        select ks_school.name,ks_class.specialized from ks_class left join ks_school on ks_class.school_cl=ks_school.id
-    </select>
-
-
-
-
-    <select id="getschool"  resultMap="inquirymap">
-        select ks_school.name from ks_school
-    </select>
-
-
-    <select id="getclass"  resultMap="inquirymap">
-        select ks_class.specialized from ks_school left join ks_class on  ks_class.school_cl=ks_school.id
-         where ks_school.name=#{school}
-    </select>
-
-
 </mapper>

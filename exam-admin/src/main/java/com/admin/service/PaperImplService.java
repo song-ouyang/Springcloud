@@ -21,8 +21,6 @@ public interface PaperImplService extends IService<Paper> {
 
     CommonResult   getallpaper();
 
-    CommonResult   getpaper(int id);
-
     CommonResult createPaper( Map map);
     CommonResult <List>getTopic( int type,String subject,String level);
 

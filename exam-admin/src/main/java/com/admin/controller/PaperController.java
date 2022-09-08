@@ -17,11 +17,6 @@ public class PaperController {
     @Autowired
     private PaperImplService paperImplService;
 
-    //查看单个试卷/考试
-    @RequestMapping("/getpaper")
-    public CommonResult getpaper(int id) {
-        return paperImplService.getpaper(id);
-    }
 
     //查看所有试卷
     @RequestMapping("/getallpaper")
@@ -42,6 +37,7 @@ public class PaperController {
       //  System.out.println((String) map.get("subject"));
         return paperImplService.createPaper(map);
     }
+
 
     //预览自己组的试卷
     @RequestMapping("/viewPaper")

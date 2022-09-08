@@ -17,16 +17,4 @@
         <result column="ft_level" property="ftLevel" />
     </resultMap>
 
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-
-    <select id="select2"  resultMap="inquirymap">
-        select ex_recording.ex_level,ex_recording.type,tm_fill.ft_question,tm_fill.ft_subject,tm_fill.ft_right,tm_fill.ft_analysis,tm_fill.ft_score,tm_fill.ft_state,tm_fill.ft_level
-        from tm_fill
-        left join  ex_recording on ex_recording.ex_id=tm_fill.id
-        where ex_recording.id= #{id}
-    </select>
-
-
-
 </mapper>

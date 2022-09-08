@@ -1,5 +1,4 @@
-packa
-        ge com.admin.controller;
+package com.admin.controller;
 
 
 import com.admin.service.StudentImplService;

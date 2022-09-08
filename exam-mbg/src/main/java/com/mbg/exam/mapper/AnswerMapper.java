@@ -2,7 +2,6 @@ package com.mbg.exam.mapper;
 
 import com.mbg.exam.entity.Answer;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.lettuce.core.dynamic.annotation.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -19,9 +18,9 @@ public interface AnswerMapper extends BaseMapper<Answer> {
 
 
     //   List<Map<String, Object>> getpaperandanswer1(@Param("paperid")int paperid,@Param("stuid")String stuid);
-    List<Map<String, Object>> getpaperandanswer1(@Param("paperid")int paperid, @Param("stuid")String stuid);
+    List<Map<String, Object>> getpaperandanswer1(int paperid, String stuid);
 
-    List<Map<String, Object>> getpaperandanswer2(@Param("paperid")int paperid,@Param("stuid")String stuid);
+    List<Map<String, Object>> getpaperandanswer2(int paperid,String stuid);
 
     List<Map<String, Object>> getrandow(int paperid);
 

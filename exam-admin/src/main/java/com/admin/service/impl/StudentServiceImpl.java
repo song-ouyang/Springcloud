@@ -231,53 +231,53 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
                 System.out.println("aaa");
                 QueryWrapper<Choose> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", chooseMapper.selectOne(queryWrapper1));
+                entry.put("topic", chooseMapper.selectList(queryWrapper1));
             }
             //填空
             else if (type == 3) {
                 QueryWrapper<Fill> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", fillMapper.selectOne(queryWrapper1));
+                entry.put("topic", fillMapper.selectList(queryWrapper1));
             }
             //判断  1
             else if (type == 4) {
                 QueryWrapper<Fill> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", fillMapper.selectOne(queryWrapper1));
+                entry.put("topic", fillMapper.selectList(queryWrapper1));
             }
             //阅读理解  1
             else if (type == 5) {
                 QueryWrapper<Yue> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", yueMapper.selectOne(queryWrapper1));
+                entry.put("topic", yueMapper.selectList(queryWrapper1));
             }
 
             //分录资料  1
             else if (type == 6 || type == 7) {
                 QueryWrapper<Fen> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", fenMapper.selectOne(queryWrapper1));
+                entry.put("topic", fenMapper.selectList(queryWrapper1));
             }
 
             //8.名词解析 9.论述  10.计算题  11.简答 12.口语  1
             else if (type == 8 || type == 9 || type == 10 || type == 11 || type == 12) {
                 QueryWrapper<Mingci> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", mingciMapper.selectOne(queryWrapper1));
+                entry.put("topic", mingciMapper.selectList(queryWrapper1));
             }
 
             // 13.完型  1
             else if (type == 13) {
                 QueryWrapper<FullInput> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", fullInputMapper.selectOne(queryWrapper1));
+                entry.put("topic", fullInputMapper.selectList(queryWrapper1));
                 continue;
             }
             //  14.听力  1
             else if (type == 14) {
                 QueryWrapper<Listen> queryWrapper1 = new QueryWrapper<>();
                 queryWrapper1.eq("id", id);
-                entry.put("topic", listenMapper.selectOne(queryWrapper1));
+                entry.put("topic", listenMapper.selectList(queryWrapper1));
 
             }
         }
@@ -288,7 +288,6 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public CommonResult showStudentPaper(int paperid,String stuid) {
         List list=answerMapper.getpaperandanswer2(paperid,stuid);
         System.out.println(list.size());
-        System.out.println(list);
         for (int i = 0; i < list.size(); i++) {
             Object lo = list.get(i);
             Map entry = (Map) lo;
@@ -361,6 +360,8 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         }
         return CommonResult.success(list,"查看成功");
     }
+
+
 
     @Override
     public CommonResult studentStudent(int paperid) {

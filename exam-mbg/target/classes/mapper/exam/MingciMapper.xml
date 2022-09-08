@@ -17,15 +17,4 @@
         <result column="mt_level" property="mtLevel" />
     </resultMap>
 
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-    <select id="select5"  resultMap="inquirymap">
-        select ex_recording.ex_level,ex_recording.type,tm_mingci.mt_question,tm_mingci.mt_right,tm_mingci.mt_analysis,tm_mingci.mt_analysis,tm_mingci.mt_score,tm_mingci.mt_subject,tm_mingci.mt_state,tm_mingci.mt_level
-        from tm_mingci
-        left join  ex_recording on ex_recording.ex_id=tm_mingci.id
-        where ex_recording.id= #{id}
-    </select>
-
-
-
 </mapper>

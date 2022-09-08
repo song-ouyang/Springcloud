@@ -25,17 +25,16 @@
     <resultMap id="inquirymap" type="java.util.HashMap"/>
 
     <select id="getpaperandanswer1" resultMap="inquirymap">
-        select ks_answer.state,ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ks_answer.score,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
+        select ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ks_answer.score,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
         from ks_answer
-                 INNER JOIN ex_recording on ks_answer.paper_id=ex_recording.paper_id
-        where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1}  and  ks_answer.answer_order=ex_recording.ex_level
+                 join ex_recording on ks_answer.paper_id=ex_recording.paper_id
+        where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1}
     </select>
 
+
     <select id="getpaperandanswer2" resultMap="inquirymap">
-        select ks_answer.state,ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
-        from ks_answer
-            INNER JOIN ex_recording on ks_answer.paper_id=ex_recording.paper_id
-        where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1} and  ks_answer.answer_order=ex_recording.ex_level
+        select ks_answer.answer,ks_answer.answer2,ks_answer.answer3,ks_answer.answer4,ks_answer.answer5,ks_answer.paper_id,ks_answer.answer_order,ks_answer.answer_order,ex_recording.paper_id,ex_recording.type,ex_recording.ex_id
+        from ks_answer join ex_recording on ks_answer.paper_id=ex_recording.paper_id where ks_answer.paper_id=#{arg0} and  ks_answer.stu_id=#{arg1}
     </select>
 
     <select id="getrandow" resultMap="BaseResultMap">

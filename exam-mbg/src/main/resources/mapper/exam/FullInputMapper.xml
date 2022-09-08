@@ -91,16 +91,4 @@
         <result column="fut_level" property="futLevel" />
     </resultMap>
 
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-    <select id="select6"  resultMap="inquirymap">
-        select ex_recording.ex_level,ex_recording.type,tm_full_input.fut_subject,tm_full_input.fut_score,tm_full_input.fut_data,tm_full_input.fut_analysis,tm_full_input.fut_level,tm_full_input.answer1A,tm_full_input.answer1B,tm_full_input.answer1C,tm_full_input.answer1D,tm_full_input.answer2A,tm_full_input.answer2B,tm_full_input.answer2C,tm_full_input.answer2D,tm_full_input.answer3A,tm_full_input.answer3B,tm_full_input.answer3C,tm_full_input.answer3D,tm_full_input.answer4A,tm_full_input.answer4B,tm_full_input.answer4C,tm_full_input.answer4D,tm_full_input.answer5A,tm_full_input.answer5B,tm_full_input.answer5C,tm_full_input.answer5D,tm_full_input.answer6A,tm_full_input.answer6B,tm_full_input.answer6C,tm_full_input.answer6D,tm_full_input.answer7A,tm_full_input.answer7B,tm_full_input.answer7C,tm_full_input.answer7D,tm_full_input.answer8A,tm_full_input.answer8B,tm_full_input.answer8C,tm_full_input.answer8D,tm_full_input.answer9A,tm_full_input.answer9B,tm_full_input.answer9C,tm_full_input.answer9D,tm_full_input.answer10A,tm_full_input.answer10B,tm_full_input.answer10C,tm_full_input.answer10D,tm_full_input.answer11A,tm_full_input.answer11B,tm_full_input.answer11C,tm_full_input.answer11D,tm_full_input.answer12A,tm_full_input.answer12B,tm_full_input.answer12C,tm_full_input.answer12D,tm_full_input.answer13A,tm_full_input.answer13B,tm_full_input.answer13C,tm_full_input.answer13D,tm_full_input.answer14A,tm_full_input.answer14B,tm_full_input.answer14C,tm_full_input.answer14D,tm_full_input.answer15A,tm_full_input.answer15B,tm_full_input.answer15C,tm_full_input.answer15D
-        from tm_full_input
-                left join  ex_recording on ex_recording.ex_id=tm_full_input.id
-        where ex_recording.id= #{id}
-    </select>
-
-
-
-
 </mapper>

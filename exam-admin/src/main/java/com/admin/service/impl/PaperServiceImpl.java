@@ -105,16 +105,6 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
     private FullInputMapper fullInputMapper;
 
 
-
-
-
-    @Override
-    public CommonResult getpaper(int id) {
-        QueryWrapper<Paper> queryWrapper=new QueryWrapper();
-                queryWrapper.eq("id", id);
-        return CommonResult.success(baseMapper.selectOne(queryWrapper),"查看单个试卷成功");
-    }
-
     @Override
     public CommonResult getallpaper() {
         QueryWrapper<Paper> queryWrapper=new QueryWrapper();
@@ -607,118 +597,99 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
         //类型和题号
         System.out.println(list.size());
         //   List<Object> ReturnList = null;
-        int type1=1;
-        int type2=1;
-        int type3=1;
-        int type4=1;
-        int type5=1;
-        int type6=1;
-        int type7=1;
-        int type8=1;
-        int type9=1;
-        int type10=1;
-        int type11=1;
-        int type12=1;
-        int type13=1;
-        int type14=1;
-
        List ReturnList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
            // Object lo = list.get(i);
             System.out.println(list.get(i).getExLevel()+"---"+list.get(i).getType()+"---"+list.get(i).getExId());
             int type=list.get(i).getType();
             int id=list.get(i).getExId();
-            int id1=list.get(i).getId();
             System.out.println(type+"---"+id);
             //无论单选 多选 是根据 唯一的题号  1
             if (type==1||type==2)
             {
-                /*ReturnList.add(chooseMapper.select1(id,type1));*/
-                ReturnList.add(chooseMapper.select1(id1));
+                System.out.println("aaa");
+                QueryWrapper<Choose> queryWrapper1 = new QueryWrapper<>();
+                queryWrapper1.eq("id",id);
+               // Object lo = chooseFuMapper.selectList(queryWrapper1);
+              //  System.out.println(lo);
+                ReturnList.add(chooseMapper.selectList(queryWrapper1));
                 continue;
             }
             //填空
-           else if(type==3)
+            else if(type==3)
             {
-            //    QueryWrapper<Fill> queryWrapper1=new QueryWrapper<>();
-             //   queryWrapper1.eq("id",id);
+                QueryWrapper<Fill> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.eq("id",id);
             //    Object lo =fillFuMapper.selectList(queryWrappe.r1);
               //  System.out.println(lo);
-             //   ReturnList.add(fillMapper.selectList(queryWrapper1));
-                ReturnList.add(fillMapper.select2(id1));
+                ReturnList.add(fillMapper.selectList(queryWrapper1));
                 continue;
             }
             //判断  1
             else if(type==4)
             {
-             //   QueryWrapper<Fill> queryWrapper1=new QueryWrapper<>();
-              //  queryWrapper1.eq("id",id);
+                QueryWrapper<Fill> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.eq("id",id);
             //    Object lo =fillFuMapper.selectList(queryWrapper1);
             //    System.out.println(lo);
-                ReturnList.add(fillMapper.select2(id1));
+                ReturnList.add(fillMapper.selectList(queryWrapper1));
                 continue;
             }
             //阅读理解  1
             else if(type==5)
             {
-               // QueryWrapper<Yue> queryWrapper1=new QueryWrapper<>();
-             //   queryWrapper1.eq("id",id);
+                QueryWrapper<Yue> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.eq("id",id);
              //   Object lo =yueFuMapper.selectList(queryWrapper1);
                // System.out.println(lo);
-             //   ReturnList.add(yueMapper.selectList(queryWrapper1));
-                ReturnList.add(yueMapper.select3(id1));
+                ReturnList.add(yueMapper.selectList(queryWrapper1));
                 continue;
             }
 
             //分录资料  1
             else if(type==6||type==7)
             {
-             /*   QueryWrapper<Fen> queryWrapper1=new QueryWrapper<>();
+                QueryWrapper<Fen> queryWrapper1=new QueryWrapper<>();
                 queryWrapper1.eq("id",id);
-                ReturnList.add(fenMapper.selectList(queryWrapper1));*/
-                ReturnList.add(fenMapper.select4(id1));
+                ReturnList.add(fenMapper.selectList(queryWrapper1));
                 continue;
             }
 
             //8.名词解析 9.论述  10.计算题  11.简答 12.口语  1
             else if(type==8||type==9||type==10||type==11||type==12)
             {
-              /*  QueryWrapper<Mingci> queryWrapper1=new QueryWrapper<>();
+                QueryWrapper<Mingci> queryWrapper1=new QueryWrapper<>();
                 queryWrapper1.eq("id",id);
-                ReturnList.add(mingciMapper.selectList(queryWrapper1));*/
-                ReturnList.add(mingciMapper.select5(id1));
+                ReturnList.add(mingciMapper.selectList(queryWrapper1));
                 continue;
             }
 
-           // 13.听力  1
+           // 13.完型  1
             else if(type==13)
             {
-/*                QueryWrapper<FullInput> queryWrapper1=new QueryWrapper<>();
+                QueryWrapper<FullInput> queryWrapper1=new QueryWrapper<>();
                 queryWrapper1.eq("id",id);
                 //   Object lo =yueFuMapper.selectList(queryWrapper1);
                 // System.out.println(lo);
-                ReturnList.add(fullInputMapper.selectList(queryWrapper1));*/
-                ReturnList.add(listenMapper.select7(id1));
-
+                ReturnList.add(fullInputMapper.selectList(queryWrapper1));
                 continue;
             }
 
-          //  14.完型  1
+          //  14.听力  1
             else if(type==14)
             {
-/*                QueryWrapper<Listen> queryWrapper1=new QueryWrapper<>();
+                QueryWrapper<Listen> queryWrapper1=new QueryWrapper<>();
                 queryWrapper1.eq("id",id);
                 //   Object lo =yueFuMapper.selectList(queryWrapper1);
                 // System.out.println(lo);
-                ReturnList.add(listenMapper.selectList(queryWrapper1));*/
-                ReturnList.add(fullInputMapper.select6(id1));
+                ReturnList.add(listenMapper.selectList(queryWrapper1));
                 continue;
             }
         }
       //  System.out.println(ReturnList);
     /*    Map map=(Map) list;
         System.out.println(map.get("type")+"----"+map.get("exId"));*/
-        return CommonResult.success(ReturnList,"查看试卷题目成功");
+        return CommonResult.success(ReturnList,"查看判断题目成功");
     }
 
 
@@ -1054,6 +1025,7 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
 
 
 
+
     //创建考试
     @SneakyThrows
     @Override
@@ -1065,7 +1037,6 @@ public class PaperServiceImpl extends ServiceImpl<PaperMapper, Paper> implements
         paper.setTeaName((String) map.get("tea_name"));
         paper.setExamTime((String) map.get("exam_time"));
         paper.setNum(Integer.parseInt((String)map.get("num")));
-       // paper.setScore(Integer.parseInt((String)map.get("score")));
         //把string转 Date Date转localdatetime
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         ZoneId zoneId = ZoneId.systemDefault();

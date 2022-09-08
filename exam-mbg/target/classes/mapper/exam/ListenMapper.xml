@@ -22,16 +22,4 @@
         <result column="lt_level" property="ltLevel" />
     </resultMap>
 
-
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-    <select id="select7"  resultMap="inquirymap">
-        select ex_recording.ex_level,ex_recording.type,tm_listen.lt_subject,tm_listen.lt_data,tm_listen.lt_question,tm_listen.lt_answerA,tm_listen.lt_answerB,tm_listen.lt_answerC,tm_listen.lt_answerD,tm_listen.lt_right,tm_listen.lt_analysis,tm_listen.lt_score,tm_listen.lt_level
-        from tm_listen
-        left join  ex_recording on ex_recording.ex_id=tm_listen.id
-        where ex_recording.id= #{id}
-    </select>
-
-
-
 </mapper>

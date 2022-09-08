@@ -25,15 +25,4 @@
         <result column="fen_level" property="fenLevel" />
     </resultMap>
 
-
-    <resultMap id="inquirymap" type="java.util.HashMap"/>
-    <select id="select4"  resultMap="inquirymap">
-        select ex_recording.ex_level, ex_recording.type,tm_fen.fen_subject,tm_fen.fen_question,tm_fen.fen_answer1,tm_fen.fen_right1,tm_fen.fen_answer2,tm_fen.fen_right2,tm_fen.fen_answer3,tm_fen.fen_right3,tm_fen.fen_answer4,tm_fen.fen_right4,tm_fen.fen_answer5,tm_fen.fen_right5,tm_fen.fen_analysis,tm_fen.fen_score,fen_level
-        from tm_fen
-        left join  ex_recording on ex_recording.ex_id=tm_fen.id
-        where ex_recording.id= #{id}
-    </select>
-
-
-
 </mapper>
